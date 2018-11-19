@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+                border: 1px solid black;
+                padding: 2px;
+            }
+        </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        numT = true;
+        do {
+            num = prompt("Dame un número:", "");
+            if (num == "") {
+                alert("ERROR. No ha introducido NADA!")
+            } else if (isNaN(num)) {
+                alert("ERROR. No ha Introducido un numero!")
+            } else {
+                numT = false;
+            }
+        } while (numT);
+        for (i = num; i >= 1; i--) {
+            div = 0;
+            for (j = i; j >= 1; j--) {
+                if (i % j == 0) {
+                    div++;
+                }
+            }
+            if (div > 2) {
+                document.write(i + " no es primo </br>");
+            } else {
+                document.write(i + " es primo </br>");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

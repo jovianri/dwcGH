@@ -1,0 +1,52 @@
+<body>
+    <div id="c3p2">
+
+    </div>
+    <div id="p2+k2">
+        <p id="p0">¯\_(ツ)_/¯</p>
+        <p id="p1" align="center">¯\_(ツ)_/¯</p>
+        <p id="p2">¯\_(ツ)_/¯</p>
+    </div>
+    <div id="c1">
+
+    </div>
+    <div id="c2">
+
+    </div>
+</body>
+
+<script>
+
+    let capa0 = document.getElementById("p2+k2");
+    console.log(capa0);
+
+    let hijos = capa0.childNodes;
+    console.log(hijos[4]);
+
+    let capas = document.getElementsByTagName("div");
+    for (let i = 0; i < capas.length; i++) {
+        console.log(capas[i].id);
+        //alert(capas[i].id);
+    }
+
+    let miparrafo = document.createElement("p");
+    console.log(miparrafo);
+    miparrafo.id = "r2d2";
+
+    let mitexto = document.createTextNode("Mi texto");
+    console.log(mitexto);
+
+    miparrafo.appendChild(mitexto);
+    console.log(miparrafo);
+
+    //document.body.appendChild(miparrafo);
+    document.getElementById("c3p2").appendChild(miparrafo);
+
+    let p = document.getElementById("p1");
+    console.log(p.getAttribute("align"));
+    console.log(p.align);
+    console.log(p.attributes.getNamedItem("align"));
+
+    
+
+</script>

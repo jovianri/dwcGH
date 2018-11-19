@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<script>
+    let paises = [
+        {
+            'pais': 'España',
+            'codigo': 34,
+            'ciudades': [
+                { 'nombre': 'Valencia', 'hab': '1000000' },
+                { 'nombre': 'Madrid', 'hab': '5000000' },
+                { 'nombre': 'Sevilla', 'hab': '4000000' }
+            ]
+        },
+        {
+            'pais': 'EEUU',
+            'codigo': 1,
+            'ciudades': [
+                { 'nombre': 'Stanford', 'hab': '1000000' },
+                { 'nombre': 'Nueva York', 'hab': '5000000' },
+                { 'nombre': 'Filadelfia', 'hab': '4000000' }
+            ]
+        }
+    ];
+</script>
+
+<body>
+    <select id="pais" onchange="showCities()">
+        <option value="0">seleccione un pais</option>
+        <script>
+            paises.map(function (n) {
+                document.write('<option value="', n.codigo, '">', n.pais, '</option>');
+            });
+        </script>
+    </select>
+    <script>
+
+        function showCities() {
+            var deleter = document.getElementById("ciudades")
+            if (deleter != null) {
+                deleter.remove();
+            }
+
+            var x = document.getElementById("pais").value;
+            var tempPais;
+            mipais = paises.filter(function (n) {
+                if (n.codigo == x) {
+                    tempPais = n;
+                }
+            })
+
+            var para = document.createElement("select");
+            tempPais.ciudades.map(function (n) {
+                var o = document.createElement("option");
+                o.setAttribute("value", n.hab);
+                var t = document.createTextNode(n.nombre);
+                o.appendChild(t);
+                para.appendChild(o);
+            });
+            para.id = "ciudades";
+            document.body.appendChild(para);
+        }
+
+
+    </script>
+</body>
+
+</html>

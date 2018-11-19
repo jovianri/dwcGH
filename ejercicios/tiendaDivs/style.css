@@ -1,0 +1,48 @@
+html{
+	font-family: 'Open Sans', sans-serif;
+}
+div.body{
+	width: 85%;
+	margin: auto;
+}
+div.cajaCatalogo{
+    display: inline-block;
+    border: 3px solid;
+    background-color: #333;
+    border-color: #b31b1b;
+    color: white;
+    padding: 3px;
+    height: 130px;
+    width: 130px;
+}
+div.cajaCarro{
+    display: inline-block;
+    border: 3px solid;
+    background-color: #333;
+    border-color: #b31b1b;
+    color: white;
+    padding: 3px;
+    width: 130px;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:100px;
+    height: 75px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a :hover{
+    color: #b31b1b;
+}
+p{
+    text-align: center;
+}
+.cajaPadre{
+    width: fit-content;
+    border: 3px solid;
+    padding: 5px;
+}

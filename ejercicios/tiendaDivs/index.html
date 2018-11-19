@@ -1,0 +1,163 @@
+<!DOCTyPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Carrito</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<script>
+	class Item {
+		constructor(nombre, precio) {
+			this.nombre = nombre;
+			this.precio = precio;
+			this.count = 0;
+		}
+		getNombre() {
+			return this.nombre;
+		}
+		getPrecio() {
+			return this.nombre;
+		}
+		getCount() {
+			return this.count;
+		}
+	}
+
+	item = new Item("test", "0");
+	carrito = [];
+	carrito.push(item);
+
+	function limpiar() {
+		while (cajaCarro.firstChild) {
+			cajaCarro.removeChild(cajaCarro.firstChild);
+		}
+		carrito = [];
+		totalFunct();
+	}
+
+	function recharge() {
+		while (cajaCarro.firstChild) {
+			cajaCarro.removeChild(cajaCarro.firstChild);
+		}
+		carrito.forEach(function (element) {
+			if (element.count > 0) {
+				car = document.createElement('div');
+				car.setAttribute("id", "carro_" + element.nombre);
+				car.setAttribute("class", "cajaCarro");
+				img = document.createElement("img");
+				img.setAttribute("class", "center");
+				img.setAttribute("src", element.nombre + ".jpg");
+				car.appendChild(img);
+				p = document.createElement("p");
+				tp = document.createTextNode("Precio: " + element.precio + "€\nUnidades: " + element.count + "\nTotal: " + element.precio * element.count + "€");
+				p.appendChild(tp);
+				car.appendChild(p);
+				buttonDeleteOne = document.createElement('button');
+				buttonDeleteOne.innerHTML = "Elimina Uno";
+				buttonDeleteOne.setAttribute("onclick", "deleteOne('" + element.nombre + "')");
+				p.appendChild(buttonDeleteOne);
+				buttonDeleteAll = document.createElement('button');
+				buttonDeleteAll.innerHTML = "Elimina Todos";
+				buttonDeleteAll.setAttribute("onclick", "deleteAll('" + element.nombre + "')");
+				p.appendChild(buttonDeleteAll);
+				car.appendChild(p);
+				cajaCarro.appendChild(car);
+			}
+		});
+		totalFunct();
+	}
+
+	function add(element) {
+		id = element.id;
+		price = element.getElementsByClassName('price')[0].textContent;
+		cajaCarro = document.getElementById("carrito");
+
+		const result = carrito.filter(item => { return item.nombre === id });
+
+		if (typeof result[0] === "undefined") {
+			item = new Item(id, price);
+			carrito.push(item);
+			carrito.forEach(function (element) {
+				if (element.nombre == id) {
+					element.count++;
+				}
+			});
+		} else {
+			carrito.forEach(function (element) {
+				if (element.nombre == id) {
+					element.count++;
+				}
+			});
+		}
+		recharge();
+	}
+
+	function deleteOne(elex) {
+		idx = elex + "";
+		console.log("delete one" + elex);
+		const result = carrito.filter(item => { return item.nombre === idx });
+		carrito.forEach(function (element) {
+			console.log("element: " + element);
+			if (element.nombre == idx) {
+				console.log("element count: " + element.count);
+				element.count--;
+			}
+		});
+		recharge();
+	}
+	function deleteAll(elex) {
+		idx = elex + "";
+		console.log("delete all" + idx);
+		const result = carrito.filter(item => { return item.nombre === idx });
+		carrito.forEach(function (element) {
+			console.log("element: " + element);
+			if (element.nombre == idx) {
+				console.log("element count: " + element.count);
+				element.count = 0;
+			}
+		});
+		recharge();
+	}
+</script>
+<body>
+	<div class="body">
+		<h2>Catalogo</h2>
+		<div class="cajaPadre">
+			<a id="item1" onclick="add(this)">
+				<div class="cajaCatalogo">
+					<img src="item1.jpg" alt="logo" class="center">
+					<p>Precio: 100€</p>
+					<p class="price" hidden>100</p>
+				</div>
+			</a>
+			<a id="item2" onclick="add(this)">
+				<div class="cajaCatalogo">
+					<img src="item2.jpg" alt="logo" class="center">
+					<p>Precio: 200€</p>
+					<p class="price" hidden>200</p>
+				</div>
+			</a>
+			<a id="item3" onclick="add(this)">
+				<div class="cajaCatalogo">
+					<img src="item3.jpg" alt="logo" class="center">
+					<p>Precio: 400€</p>
+					<p class="price" hidden>400</p>
+				</div>
+			</a>
+		</div>
+		<h2>Carrito</h2>
+		<div id="carrito" class="cajaPadre"></div>
+		<h3 id="total">Total Carro: </h3>
+		<script>
+			function totalFunct() {
+				total = 0;
+				carrito.forEach(function (element) {
+					total = element.count * element.precio + total;
+				});
+				document.getElementById("total").innerHTML = "Total Carro: " + total;
+			}
+		</script>
+		<button onclick="limpiar()">Limpiar Carro</button>
+	</div>
+</body>
+</html>

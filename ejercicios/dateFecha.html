@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendario</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        let d = new Date();/*
+        let diaS = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+        let dSemana = diaS[d.getDay()];*/
+        let dSemana = d.getDay();
+        let dDia = d.getDate();
+        let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octuble", "Noviembre", "Diciembre"];
+        let dMes = meses[d.getMonth()];
+        let start = true;
+        let dPDM = new Date();
+        dPDM.setDate(1);
+        let dSemanaPrimerDelMes = dPDM.getDay();
+
+        document.write("<h1>Calendario actual</h1>");
+        document.write("<table><tr><th>Lu</th><th>Ma</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sa</th><th>Do</th></tr>");
+
+        function numDiasDelMes(a) {
+            if (a == "Enero" || a == "Marzo" || a == "Mayo" || a == "Julio" || a == "Agosto" || a == "Octubre" || a == "Diciembre") {
+                return 31;
+            } else if (a == "Febrero") {
+                return 28;
+            } else {
+                return 30;
+            }
+        }
+
+        let k = 1;
+        for (let i = 1; i <= numDiasDelMes(dMes); i++) {
+            do {
+                if (dSemanaPrimerDelMes == 0) {
+                    dSemanaPrimerDelMes = 7;
+                }
+                if (k == dSemanaPrimerDelMes) {
+                    start = false;
+                }
+                if (start) {
+                    if (k == 1) {
+                        document.write("<tr>");
+                    }
+                    document.write("<td></td>")
+                    if (k == 8) {
+                        document.write("</tr>");
+                    }
+                }
+                k++;
+            } while (start);
+            if (k == 1) {
+                document.write("<tr>");
+            }
+            document.write("<td>" + i + "</td>")
+            if (k == 8) {
+                k = 1;
+                document.write("</tr>");
+            }
+        }
+        document.write('</table>');
+    </script>
+</body>
+
+</html>

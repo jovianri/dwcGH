@@ -1,0 +1,40 @@
+<script>
+    "use strict"
+
+    function suma(a, b = 10) {
+        return a + b;
+    }
+
+    function suma2(a, b) {
+        if (b == undefined) {
+            return a;
+        }
+        return a + b;
+    }
+
+    function suma3() {
+        console.log(arguments.length);
+    }
+
+    let misuma = function suma(a, b) {
+        return a + b;
+    }
+
+    console.log(suma(1, 2));
+    console.log(suma(1));
+    console.log(suma(1, 2, 3));
+    console.log(suma2(1));
+    suma3(1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
+    console.log(misuma);
+    console.log(misuma(1, 2));
+
+    let cadena1=`cadena de texto`;
+    let cadena2="cadena de texto";
+    let cadena3=`cadena de texto
+    con salto de linea`;
+
+    let d = new Date();
+
+    console.log(d);
+
+</script>

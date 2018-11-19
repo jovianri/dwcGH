@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+                border: 1px solid black;
+                padding: 2px;
+            }
+        </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        numT = true;
+        do {
+            num1 = parseInt(prompt("Dame un número:", ""));
+            if (num1 == "") {
+                alert("ERROR. No ha introducido NADA!")
+            } else if (isNaN(num1)) {
+                alert("ERROR. No ha Introducido un numero!")
+            } else {
+                numT = false;
+            }
+        } while (numT);
+
+        numT = true;
+        do {
+            num2 = parseInt(prompt("Dame un segundo número:", ""));
+            if (num2 == "") {
+                alert("ERROR. No ha introducido NADA!")
+            } else if (isNaN(num2)) {
+                alert("ERROR. No ha Introducido un numero!")
+            } else {
+                numT = false;
+            }
+        } while (numT);
+
+        if (num1 > num2) {
+            tnum = num1;
+            num1 = num2;
+            num2 = tnum;
+        }
+
+        document.write("<h1>Tablas de multiplicar del " + num1 + " al " + num2 + "</h1>");
+        contEntre = num2 - num1;
+        num1t = num1;
+        document.write("<table>");
+
+        for (i = 1; i <= contEntre + 1; i++) {
+            if (i % 2 == 0) {
+                document.write("<th>");
+            } else {
+                document.write("<tr><th>");
+            }
+            document.write("<table><tr><th>num</th><th>x</th><th>num i</th> <th>producto</th></tr>");
+
+            for (j = 1; j <= 10; j++) {
+                res = num1t * j;
+                if (j % 2 == 0) {
+                    document.write('<tr><th>' + num1t + '</th><th>x</th><th>' + j + '</th> <th>' + res + '</th></tr>');
+                } else {
+                    document.write('<tr style="background-color: #f1f1c1;" ><th>' + num1t + '</th><th>x</th><th>' + j + '</th> <th>' + res + '</th></tr>');
+                }
+            }
+
+            if (i % 2 == 0) {
+                document.write("</th>");
+            } else {
+                document.write("</tr></th>");
+            }
+            document.write('</table>');
+            num1t++;
+        }
+        document.write("</table>");
+    </script>
+</body>
+
+</html>
