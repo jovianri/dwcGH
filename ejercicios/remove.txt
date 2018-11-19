@@ -1,0 +1,19 @@
+I know that augmenting native DOM functions isn't always the best or most popular solution, but this works fine for modern browsers.
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+And then you can remove elements like this
+
+document.getElementById("my-element").remove();
+or
+
+document.getElementsByClassName("my-elements").remove();
+Note: this solution doesn't work for IE 7 and below.
